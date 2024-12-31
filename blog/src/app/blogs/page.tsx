@@ -4,21 +4,21 @@ import Article from "../components/Article";
 import Link from "next/link";
 
 export interface IGetArticles {
-  id?: number;
+  id?: String;
   title: string;
   description: string;
 }
 
 async function Blogs(){
 
-  const result = await fetch("http://localhost:3007/articles");
+  const result = await fetch("http://localhost:3003/articles");
   const data = await result.json() as IGetArticles[];
 console.log(data);
     return(
         <Container>
           <div className="grid grid-cols-4 gap-4 py-16">
             {data.map((item) => (
-              <Link href={`/blogs/${item.id}`} key={item.id}>
+              <Link href={`/blogs/${item.id}`} key={item.id} >
                   <Article {...item}  />
               </Link>
          
